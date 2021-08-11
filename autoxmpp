@@ -12,7 +12,7 @@ read adminuser
 
 sed -i "s/admins = { }/admins = { \"$adminuser\" }/g" /etc/prosody/prosody.cfg.lua
 sed -i "s/VirtualHost \"localhost\"/Virtualhost \"$serverurl\"/g" /etc/prosody/prosody.cfg.lua
-echo -e "\nComponent \"multi.$serverurl\" \"muc\"\n    modules_enabled = { \"muc_mam\" }" >> /etc/prosody/prosody.cfg.lua
+echo "\nComponent \"multi.$serverurl\" \"muc\"\n    modules_enabled = { \"muc_mam\" }" >> /etc/prosody/prosody.cfg.lua
 sed -i 's/allow_registration = false/allow_registration = true\nmin_seconds_between_registrations = 21600;/g' /etc/prosody/prosody.cfg.lua
 sed -i 's/s2s_secure_auth = false/s2s_secure_auth = true/g' /etc/prosody/prosody.cfg.lua
 sed -i 's/--"watchregistrations";/"watchregistrations"/g' /etc/prosody/prosody.cfg.lua

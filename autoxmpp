@@ -11,12 +11,12 @@ echo "Who do you want your admin user to be? (e.g. administrator)"
 read adminuser
 
 sed -i "s/admins = { }/admins = { \"$adminuser\" }/g" /etc/prosody/prosody.cfg.lua
-sed -i "s/VirtualHost \"localhost\"/Virtualhost \"$serverurl\"/g" /etc/prosody/prosody.cfg.lua
+sed -i "s/VirtualHost \"localhost\"/VirtualHost \"$serverurl\"/g" /etc/prosody/prosody.cfg.lua
 echo "\nComponent \"multi.$serverurl\" \"muc\"\n    modules_enabled = { \"muc_mam\" }" >> /etc/prosody/prosody.cfg.lua
 sed -i 's/allow_registration = false/allow_registration = true\nmin_seconds_between_registrations = 21600;/g' /etc/prosody/prosody.cfg.lua
 sed -i 's/s2s_secure_auth = false/s2s_secure_auth = true/g' /etc/prosody/prosody.cfg.lua
 sed -i 's/--"watchregistrations";/"watchregistrations"/g' /etc/prosody/prosody.cfg.lua
-sed -i 's/--modules_enabled = { "muc_mam" }/modules_enabled = {\n"mod_muc_ban_ip";\n"http_upload";\n"csi";\n"smacks";\n}/g' /etc/prosody/prosody.cfg.lua
+sed -i 's/--modules_enabled = { "muc_mam" }/modules_enabled = {\n"muc_ban_ip";\n"http_upload";\n"csi";\n"smacks";\n}/g' /etc/prosody/prosody.cfg.lua
 
 hg clone https://hg.prosody.im/prosody-modules/ /usr/local/lib/prosody/modules
 

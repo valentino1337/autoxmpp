@@ -5,7 +5,7 @@ apt install prosody
 apt install mercurial
 
 echo "-------------------------------------------------------"
-echo "What is your XMPP server domain? (e.g. xmpp.valkun.xyz)"
+echo "What is your XMPP server domain? (e.g. xmpp.example.org)"
 read serverurl
 echo "Who do you want your admin user to be? (e.g. administrator)"
 read adminuser
